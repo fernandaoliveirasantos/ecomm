@@ -1,5 +1,5 @@
 # ecomm
 
- Meu primeiro repositório curso Alura
+ Meu primeiro repositório Level Up l Semana 1
 
- Repositório criado durante Level Up l Semana 1, com estrutura de código mínima para início dos trabalhos.
+ Repositório criado durante curso Alura, com estrutura de código mínima para início dos trabalhos.
