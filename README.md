@@ -3,9 +3,6 @@
 # Meu primeiro repositório Level Up l Semana 1
 
  Repositório criado durante curso como parte do processo de aprendizagem.
- 
-# Descrição
-Nosso projeto precisa de um repositório com alguma estrutura de código mínima para iniciarmos nossos trabalhos. Dito isso, faremos nosso setup inicial para que possamos já gerenciar as versões na nossa aplicação desde o início.
 
 # O que esperamos desta atividade?
 Crie um novo repositório no GitHub chamado ecomm.
@@ -20,6 +17,4 @@ Execute esse arquivo com o Node e valide que a mensagem está sendo impressa no 
 
 Faça commit das suas mudanças.
 
-# Dicas
-Você pode não seguir a sequência exata dos passos acima, mas o resultado final deve ser o mesmo.
-Lembre-se de criar um .gitignore, para que seja ignorado quaisquer arquivos que não precisemos versionar, como os que ficam nas pasta node_modules dos projetos Node. Caso queira um template pronto, execute npx gitignore node que o binário do pacote gitignore do Node criará o arquivo para você de forma automática.
+
