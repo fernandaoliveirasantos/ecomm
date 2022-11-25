@@ -1,6 +1,6 @@
 # ecomm
 
-# Repositório Level Up l Semana 1
+# Repositório Level Up 
 
  Repositório criado durante curso como parte do processo de aprendizagem.
 
