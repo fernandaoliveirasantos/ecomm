@@ -1,6 +1,6 @@
 # ecomm
 
-# Meu primeiro repositório Level Up l Semana 1
+# Repositório Level Up l Semana 1
 
  Repositório criado durante curso como parte do processo de aprendizagem.
 
