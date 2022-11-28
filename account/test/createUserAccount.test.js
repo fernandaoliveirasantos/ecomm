@@ -1,12 +1,12 @@
-import { creatUserUseCase } from "../src/use-case/createUserAccount";
+import { createUserUseCase } from "../src/use-case/createUserAccount";
 
-creatUserUseCase (
+createUserUseCase (
     'Fernanda Oliveira', 
     'fernanda@email.com', 
     'mudarsenha'
     )
 
-    creatUserUseCase (
+    createUserUseCase (
         'Josué Lima', 
         'josuelima@email.com', 
         'mudarSenha')
