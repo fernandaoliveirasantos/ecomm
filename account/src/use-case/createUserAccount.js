@@ -1,15 +1,15 @@
-let contact = []
+let user = []
 
 export function creatUserUseCase(nome, email, senha) {
 const user = {
-    id: contact.length + 1,
+    id: user.length + 1,
     name: nome,
     email: email,
     password: senha,
     createdDate: new Date(),
   }
 
-   contact.push(user);
+   user.push(user);
    return user;
 }
 
@@ -25,5 +25,5 @@ creatUserUseCase (
   'mudarSenha')
 
 console.log(
-  'Informações do Contato:', contact
+  'Informações do Contato:', user
   )
