@@ -1,6 +1,6 @@
 let user = []
 
-export function creatUserUseCase(nome, email, senha) {
+export function createUserUseCase(nome, email, senha) {
 const user = {
     id: user.length + 1,
     name: nome,
@@ -13,13 +13,13 @@ const user = {
    return user;
 }
 
-creatUserUseCase (
+createUserUseCase (
   'Fernanda Oliveira', 
   'fernanda@email.com', 
   'mudarSenha'
   )
 
-creatUserUseCase (
+createUserUseCase (
   'Josué Lima', 
   'josue.lima@email.com', 
   'mudarSenha')
