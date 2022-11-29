@@ -1,29 +1,17 @@
-let user = []
+const user = []
 
-export function createUserUseCase(nome, email, senha) {
+export function createUserUseCase(nome, email, password) {
+const id = users.length + 1;
+const createDate = new Date().toISOString().Substring(0, 10);
+    
 const user = {
-    id: user.length + 1,
-    name: nome,
-    email: email,
-    password: senha,
-    createdDate: new Date(),
-  }
+    id,
+    name,
+    email,
+    password,
+    createdDate,
+  };
 
    user.push(user);
    return user;
 }
-
-createUserUseCase (
-  'Fernanda Oliveira', 
-  'fernanda@email.com', 
-  'mudarSenha'
-  )
-
-createUserUseCase (
-  'Josué Lima', 
-  'josue.lima@email.com', 
-  'mudarSenha')
-
-console.log(
-  'Informações do Contato:', user
-  )
