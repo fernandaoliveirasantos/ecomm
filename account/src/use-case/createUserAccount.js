@@ -1,6 +1,6 @@
 const user = []
 
-export function createUserUseCase(nome, email, password) {
+export function createUserUseCase(name, email, password) {
 const id = users.length + 1;
 const createDate = new Date().toISOString().Substring(0, 10);
     
