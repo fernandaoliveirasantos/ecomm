@@ -1,16 +1,13 @@
 import { createUserUseCase } from "../src/use-case/createUserAccount";
 
-createUserUseCase (
+const user1 = createUserUseCase (
     'Fernanda Oliveira', 
     'fernanda@email.com', 
-    'mudarsenha'
-    )
+    'mudarsenha');
 
-    createUserUseCase (
+const user2 = createUserUseCase (
         'Josué Lima', 
         'josuelima@email.com', 
-        'mudarSenha')
+        'mudarSenha');
 
-// console.log(user)
-
-// console.log('Contas: ', contact)
+console.log(user1, user2)
