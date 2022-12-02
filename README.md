@@ -12,3 +12,7 @@ Repositório criado durante o curso Alura Level UP como parte do processo de apr
 ## 💻 Semana 2/12
 - **Essencial** - Criar a conta de usuário
 - **Desejável** - Criar um novo container
+
+## 💻 Semana 3/12
+- **Essencial** - Salvando uma conta
+- **Essencial** - Criar um novo container
