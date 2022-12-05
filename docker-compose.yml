@@ -1,0 +1,26 @@
+version: '3.7'
+#criando serviço de conta
+services:
+  account:
+  image: pagonxt/account
+  build: account
+  volumes: 
+   - .account:/app
+
+  product:
+   image: pagonxt/product
+   build: product
+   volumes: 
+   - .product:/app
+
+  account_db:
+   image: mongo
+   container_name: account_db
+   
+   environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongouser
+      - MONGO_INITDB_ROOT_PASSWORD=mongopass
+      - MONGO_INITDB_DATABASE=accounts
+   ports:
+    -27017:27017
+  env_file: account/ .env

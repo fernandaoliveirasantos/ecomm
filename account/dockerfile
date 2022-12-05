@@ -1,0 +1,22 @@
+#Seleciona a imagem que iremos utilizar. No caso o node na versão 12.18.
+FROM node
+
+#É um diretório gerado dentro do Docker onde nossa aplicação será mantida.
+WORKDIR /app
+
+#Adiciona uma pasta para o diretório do Docker
+COPY pacote.json package-lock.json /app/
+
+#Executa comandos dentro do container.
+RUN npm install
+
+#Adiciona uma pasta para o diretório do Docker
+COPY . .
+
+#Expõe uma porta para o container.
+EXPOSE 3000
+
+#É o ponto de entrada quando você iniciar o container, ou seja, geralmente definimos no ENTRYPOINT o comando ou script que chama o processo responsável pela execução do container e que manterá o container vivo.
+ENTRYPOINT ["npm", "start"]
+
+#CDM: Executa comandos após a criação do container.

@@ -10,4 +10,4 @@ const user2 = createUserUseCase (
         'josuelima@email.com', 
         'mudarSenha');
 
-console.log(user1, user2)
+console.log(user1, user2);
