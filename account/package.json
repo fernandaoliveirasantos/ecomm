@@ -2,17 +2,21 @@
   "name": "account",
   "version": "1.0.0",
   "description": "",
-  "main": "createUserAccount.js",
+  "main": "src/createUserAccount.js",
   "type": "module",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "start": "nodemon test/createUserAccount.test.js"
+   
   },
   "author": "Fernanda Oliveira",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "mongodb": "^4.12.1"
   }
-}
+}  
