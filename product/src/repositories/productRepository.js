@@ -7,7 +7,7 @@ export async function saveProduct(product) {
 }
 
 export async function findProducts() {
-    const listProducts = products
-    return listProducts
+    const products = products
+    return products
 
 }
