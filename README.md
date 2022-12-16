@@ -21,3 +21,9 @@ Repositório criado durante o curso Alura Level UP como parte do processo de apr
 - **Essencial** - Cadastrar um produto
 - **Essencial** - Salvar um produto
 - **Essencial** - Lista produto
+
+## 💻 Semana 5/12
+- **Essencial** - Criar usuário via POST
+- **Essencial** - Criar produto via POST
+- **Essencial** - Listar produto via GET
+- **Essencial** - Criptografar senha do usuário
