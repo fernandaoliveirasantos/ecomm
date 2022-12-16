@@ -6,6 +6,7 @@ WORKDIR /app
 
 COPY package*.json /app/
 
+EXPOSE 3000
 #comando que deve ser rodado
 RUN npm install
 
