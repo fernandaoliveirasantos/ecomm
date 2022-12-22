@@ -1,22 +1,17 @@
-import express, { json } from 'express';
+import express from 'express';
+
 import { router } from './routes.js';
 
-const port = 3000;
 const app = express();
 
-app.use(json());
-app.use(router);
+app.use(express.json());
 
-app.listen(port, () => {
-    console.log(`Servidor de contas em execução http://localhost:${port}`)
+app.get('/health', (request, response) => {
+    return response.send();
 });
 
+app.use(router);
 
-  //import express, { json } from 'express';
-//import { router } from './routes.js';
-
-//const port = 3000;
-//const app = express();
-
-//app.use(json());
-//app.use(router);
+app.listen(3000, () => {
+    console.log('accounts service is running');
+});
