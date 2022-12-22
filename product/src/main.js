@@ -1,5 +1,17 @@
-// fazendo log da mensagem: "Inigit ciando product"
-//Usar metodo console.log 
-console.log('Iniciando product');
+import express from 'express';
 
-//Executar mensagem no terminal: dentro da pasta product\src digitar o comando <node main.js>
+import { router } from './routes.js';
+
+const app = express();
+
+app.use(express.json());
+
+app.get('/health', (request, response) => {
+    return response.send();
+});
+
+app.use(router);
+
+app.listen(3000, () => {
+    console.log('products service is running');
+});

@@ -1,11 +1,12 @@
-export const produto = 
+import { randomUUID } from 'node:crypto';
 
-{
+export const productExample = {
+    usuarioId: randomUUID(),
     nome: "Get Smart",
     valor: 130, 
-    quantidade: 1,
-    descrição:"A máquina mais moderna e completa",
-    categoria: "Maquina de Cartão - GetNet",
+    quantidade: 100,
+    descricao:"A máquina mais moderna e completa",
+    categoria: "Máquina de Cartão - GetNet",
     caracteristicas: [
         {
             nome: "Get Smart",
