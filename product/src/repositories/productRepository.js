@@ -1,13 +1,18 @@
-const products = []
+import { randomUUID } from 'node:crypto';
+
+const products = [];
 
 export async function saveProduct(product) {
-    products.push(product)
-    return products
+    const id = randomUUID();
+    const createdDate = new Date().toISOString().substring(0, 10);
 
+    const productCreated = { id, createdDate, ...product };
+ 
+    products.push(productCreated);
+
+    return productCreated;
 }
 
 export async function findProducts() {
-    const products = products
-    return products
-
+    return products;
 }
