@@ -1,25 +1,21 @@
 import { Router } from 'express';
-import { createProductUseCase } from './usecase/createProductUseCase.js';
-import { listProducts } from './usecase/listProduct.js';
-export const router = new Router();
 
-router.get('/products', function(request,response) {
-    listProducts ()
-    .then(products => {
-        response.status(201).json(products)
-    })
-    .catch(error => {
-        response.status(400).json({ status: 'error', message: error.message });
-    }); 
-} );
+import { createProductUseCase } from './use-case/createProductUseCase.js';
+import { listProductsUseCase } from './use-case/listProductsUseCase.js';
 
-router.post('/products', function(request, response) {
-    const { produto} = request.body
-    createProductUseCase(produto)
-        .then(saveProduct => {
-            response.status(201).json(saveProduct)
-        })
-        .catch(error => {
-            response.status(400).json({ status: 'error', message: error.message });
-        }); 
+const router = Router();
+
+router.post('/products', async (request, response) => {
+    const product = request.body;
+    const createdProduct = await createProductUseCase(product);
+
+    return response.status(201).json(createdProduct);
 });
+
+router.get('/products', async (request, response) => {
+    const products = await listProductsUseCase();
+
+    return response.json(products);
+});
+
+export { router };
