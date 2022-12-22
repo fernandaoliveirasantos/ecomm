@@ -1,19 +1,11 @@
-#tipo de imagem 
-FROM node:18
+FROM node
 
-#criando pasta de trabalho
-WORKDIR /app 
+WORKDIR /app
 
-COPY package*.json /app/
+ADD package.json /app/
 
-EXPOSE 3000
-#comando que deve ser rodado
 RUN npm install
 
-#copiar tudo que está na pasta src para a pasta <app>
-COPY . .
+ADD . .
 
-#comando quando o docker for excutado, pode ser usado também o "CMD"
-ENTRYPOINT npm start
-
-# rodar esse comando no terminal = docker build -t eccom/product .
+ENTRYPOINT [ "npm", "start" ]
