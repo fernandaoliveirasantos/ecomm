@@ -15,3 +15,9 @@ app.use('/api-docs', swaggerExpress.serve, swaggerExpress.setup(swaggerDocs));
 app.get('/health', (request, response) => {
     return response.send();
 });
+
+app.use(router);
+
+app.listen(3000, () => {
+    console.log('products service is running');
+});
