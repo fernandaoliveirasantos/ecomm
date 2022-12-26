@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use('/api-docs', swaggerExpress.serv, swaggerExpress.setup(swaggerDocs));
+app.use('/api-docs', swaggerExpress.serve, swaggerExpress.setup(swaggerDocs));
 
 app.get('/health', (request, response) => {
     return response.send();
