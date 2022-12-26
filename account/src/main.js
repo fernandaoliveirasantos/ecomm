@@ -6,6 +6,7 @@ import swaggerDocs from '../api-docs.json' assert { type: 'json'};
 import { router } from './routes.js';
 import { assert } from 'console';
 
+
 const app = express();
 
 app.use(express.json());
