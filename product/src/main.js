@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import swaggerExpress from 'express-swagger-ui-express';
+import swaggerExpress from 'swagger-ui-express';
 import swaggerDocs from '../api-docs.json' assert { type: 'json'};
 
 import { router } from './routes.js';
