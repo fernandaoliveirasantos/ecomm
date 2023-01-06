@@ -8,21 +8,30 @@ services:
       - ./product:/app
     ports:
       - 3000:3000
+  
+  product-database:
+    image: mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "senha"
+      MYSQL_DATABASE: products
+      MYSQL_USER: mysqluser
+      MYSQL_PASSWORD: mysqlpass
+    ports:
+      - 3307:3306 #porta 3306 já esta ocupada na máquina. 
+
   account:
     image: pagonxt/account
     build: account # docker build ./account -t pagonxt/account
     entrypoint: 'npm run start:dev'
     volumes:
-      -  ./account:/app
+      - ./account:/app
     ports:
       - 3001:3000
-
   account-database:
     image: mongo
     environment:
       MONGO_INITDB_DATABASE: accounts
       MONGO_INITDB_ROOT_USERNAME: mongouser
       MONGO_INITDB_ROOT_PASSWORD: mongopass
-
     ports:
       - 27017:27017
