@@ -31,3 +31,7 @@ Repositório criado durante o curso Alura Level UP como parte do processo de apr
 ## 💻 Semana 6/12
 - **Essencial** - Documentando API
 - **Desejável** - Expondo a documentação
+
+## 💻 Semana 7/12
+- **Essencial** - Persistir produtos
+- **Essencial** - Listar produtos
