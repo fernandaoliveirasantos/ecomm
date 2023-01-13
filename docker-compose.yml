@@ -1,25 +1,29 @@
 version: '3'
 services:
   product:
-    image: pagonxt/product
+    depends_on: 
+      - product-database 
+    image: ecomm/product
     build: product # docker build ./product -t pagonxt/product
     entrypoint: 'npm run start:dev'
     volumes:
       - ./product:/app
     ports:
-      - 3000:3000
+      - 3002:3000
   
   product-database:
     image: mysql
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: "senha"
+      MYSQL_RANDOM_ROOT_PASSWORD: true
       MYSQL_DATABASE: products
       MYSQL_USER: mysqluser
       MYSQL_PASSWORD: mysqlpass
     ports:
-      - 3307:3306 #porta 3306 já esta ocupada na máquina. 
+      - 3306:3306 #porta 3306 já esta ocupada na máquina. 
 
   account:
+    depends_on:
+      - account-database
     image: pagonxt/account
     build: account # docker build ./account -t pagonxt/account
     entrypoint: 'npm run start:dev'
