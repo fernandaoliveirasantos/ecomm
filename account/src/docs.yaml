@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: API Ecomm Accounts
+  description: API restful accounts eccom
+  contact:
+    name: Suporte a Devs
+    url: https://www.example.com
+    email: contato@example.com
+servers:
+- url: http://localhost:3001
+  description: Server 1
+paths:
+  "/accounts":
+    summary: Cadastra Conta
+    description: Cadastra conta no banco de dados de acordo com os dados fornecido
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/AccountData"
+      responses:
+        '201':
+          description: Cria a conta
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/CreatedAccountData"
+components:
+  schemas:
+    AccountData:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+    CreatedAccountData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        createdDate:
+          type: string
