@@ -5,15 +5,15 @@ info:
   description: API restful products eccom
   contact:
     name: Suporte a Devs
-    url: https://www.example.com
+    url: 'https://www.example.com'
     email: contato@example.com
 servers:
-- url: http://localhost:3000
+- url: 'http://localhost:3000'
   description: Server 1
 paths:
   "/products":
     summary: cria um produto
-    description: Cria um produto no banco de dados de acordo com os dados fornecidos
+    description: 'Cria um produto no banco de dados de acordo com os dados fornecidos'
     post:
       requestBody:
         content:
@@ -33,6 +33,76 @@ paths:
         description: "sucess"
         content:
             application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/ProductData"
+components:
+  schemas:
+    ImagemData:
+      type: object
+      properties:
+        url:
+          type: string
+        descricao:
+          type: string
+    CaracteristicaData:
+      type: object
+      properties:
+        nome:
+          type: string
+        descricao:
+          type: string
+    ProductData:
+      type: object
+      properties:
+        usuarioId:
+          type: string
+        nome:
+          type: string
+        descricao:
+          type: string
+        categoria:
+          type: string
+        quantidade:
+          type: integer
+        valor:
+          type: number
+        caracteristicas:
+          type: array
+          items:
+            "$ref": "#/components/schemas/CaracteristicaData"
+        imagens:
+          type: array
+          items:
+            "$ref": "#/components/schemas/ImagemData"
+    CreatedProductData:
+      type: object
+      properties:
+        usuarioId:
+          type: string
+        createdDate:
+          type: string
+        id:
+          type: string
+        nome:
+          type: string
+        descricao:
+          type: string
+        categoria:
+          type: string
+        quantidade:
+          type: integer
+        valor:
+          type: number
+        caracteristicas:
+          type: array
+          items:
+            "$ref": "#/components/schemas/CaracteristicaData"
+        imagens:
+          type: array
+          items:
+            "$ref": "#/components/schemas/ImagemData"
               schema:
                 type: array
                 items:
