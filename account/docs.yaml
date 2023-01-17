@@ -1,19 +1,19 @@
-openapi: 3.0.1
+openapi: 3.0.3
 info:
   version: 1.0.0
   title: Accounts API
   description: Restful API that deals with Accounts
   contact:
-    name: Dev Contacts
-    url: 'https://www.alura.com.br'
-    email: devs@alura.com.br
+    name: Suporte a Devs
+    url: 'https://www.example.com.br'
+    email: devs@example.com.br
 servers:
   - url: 'http://localhost:3001'
     description: Server 1
 paths:
   /accounts:
-    summary: creates a account
-    description: 'Given provided account data, creates a account in the database'
+    summary: cria conta
+    description: 'Cria uma conta no banco de dados de acordo com as informações fornecidas'
     post:
       requestBody:
         content:
@@ -22,7 +22,7 @@ paths:
               $ref: '#/components/schemas/AccountData'
       responses:
         201:
-          description: Account created
+          description: conta criada
           content:
             application/json:
               schema:
