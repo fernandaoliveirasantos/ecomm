@@ -1,17 +1,11 @@
 import express from 'express';
-import cors from 'cors';
+import yamljs from 'yamljs';
 import swaggerExpress from 'swagger-ui-express';
-import swaggerDocs from '../api-docs.json' assert { type: 'json'};
-
 import { router } from './routes.js';
-import { assert } from 'console';
 
-
+const swaggerDocs = yamljs.load('./docs.yaml');
 const app = express();
-
 app.use(express.json());
-app.use(cors());
-app.use('/api-docs', swaggerExpress.serve, swaggerExpress.setup(swaggerDocs));
 
 app.get('/health', (request, response) => {
     return response.send();
@@ -19,6 +13,8 @@ app.get('/health', (request, response) => {
 
 app.use(router);
 
-app.listen(3000, () => {
-    console.log('accounts service is running');
+app.use('/docs', swaggerExpress.serve, swaggerExpress.setup(swaggerDocs))
+
+app.listen(3001, () => {
+    console.log('Serviços de contas em execução');
 });

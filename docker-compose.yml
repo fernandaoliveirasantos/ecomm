@@ -1,5 +1,6 @@
 version: '3'
 services:
+  
   product:
     depends_on: 
       - product-database 
@@ -9,8 +10,8 @@ services:
     volumes:
       - ./product:/app
     ports:
-      - 3002:3000
-  
+      - 3000:3000
+      
   product-database:
     image: mysql
     environment:
@@ -31,6 +32,7 @@ services:
       - ./account:/app
     ports:
       - 3001:3000
+      
   account-database:
     image: mongo
     environment:
