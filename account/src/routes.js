@@ -1,7 +1,6 @@
 import { Router } from "express";
-
 import { createUserUseCase } from "./use-case/createUserAccount.js";
-
+import { createUserTokenUseCase } from './use-case/createUserToken.js';
 
 const router = Router();
 
@@ -14,6 +13,21 @@ router.post('/accounts', async (request, response) => {
         name: createdUser.name,
         email: createdUser.email,
         createdDate: createdUser.createdDate,
+    });
+});
+
+router.post('/tokens', async (request, response) => {
+    const { email, password } = request.body;
+    const authToken = await createUserTokenUseCase(email, password);
+
+    if(authToken) {
+        return response.status(201).json({
+            token: authToken
+        });
+    }
+
+    return response.status(401).json({
+        message: 'e-mail ou senha do usuário incorreto',
     });
 });
 
