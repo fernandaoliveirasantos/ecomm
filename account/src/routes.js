@@ -27,7 +27,7 @@ router.post('/tokens', async (request, response) => {
     }
 
     return response.status(401).json({
-        message: 'e-mail ou senha do usuário incorreto',
+        message: 'e-mail ou senha do usuário incorretos',
     });
 });
 

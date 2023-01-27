@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   version: 1.0.0
   title: Accounts API
-  description: Restful API that deals with Accounts
+  description: API Restful que lida com contas
   contact:
     name: Suporte a Devs
     url: 'https://www.example.com.br'
@@ -12,25 +12,58 @@ servers:
     description: Server 1
 paths:
   /accounts:
-    summary: cria conta
+    summary: Cria conta
     description: 'Cria uma conta no banco de dados de acordo com as informações fornecidas'
     post:
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AccountData'
+              $ref: '#/components/schemas/CreateAccountRequest'
       responses:
         201:
-          description: conta criada
+          description: Conta criada
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreatedAccountData'
+                $ref: '#/components/schemas/AccountResponse'
+  /tokens:
+    summary: Cria um token de conta
+    description: 'Cria um token de conta com é informado e-mail e senha'
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: 
+                  type: string
+                password:
+                  type: string
+      responses:
+        201:
+          description: Conta de token criada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  token:
+                    type: string
+        401:
+          description: Erro com dados da conta
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:  
+                    type: string
 
 components:
   schemas:
-    AccountData:
+    CreateAccountRequest:
       type: object
       properties:
         name:
@@ -39,7 +72,7 @@ components:
           type: string
         password:
           type: string
-    CreatedAccountData:
+    AccountResponse:
       type: object
       properties:
         id: 

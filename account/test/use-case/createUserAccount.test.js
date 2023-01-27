@@ -3,11 +3,6 @@ import { app } from '../../src/app.js';
 import { client, getUsersCollection } from '../../src/repositories/accountRepository.js';
 
 describe('Criação de conta', () => {
-
-    beforeEach(async () => {
-        await client.close();
-    });
-
     afterEach(async () => {
         await client.connect();
         const usersCollection = await getUsersCollection(client);

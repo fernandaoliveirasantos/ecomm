@@ -1,14 +1,15 @@
 import { Router } from 'express';
+import { decriptToken } from './helpers/token.js';
+
 import { createProductUseCase } from './use-case/createProductUseCase.js';
 import { listProductsUseCase } from './use-case/listProductsUseCase.js';
-import { decriptToken } from './helpers/token.js';
 
 const router = Router();
 
 router.post('/products', async (request, response) => {
     const authorizationHeader = request.headers.authorization;
     if(!authorizationHeader) {
-        return response.status(401).json({ message: 'Acesso negado. Nenhum token fornecido' })
+        return response.status(401).json({ message: 'autentificação requerida' })
     }
     
     const token = authorizationHeader.split(' ')[1];
@@ -17,12 +18,11 @@ router.post('/products', async (request, response) => {
         return response.status(400).json({ message: 'cabeçalho de autorização mal-formado'});
     }
     
-    
     const tokenDecripted = decriptToken(token);
     const userId = tokenDecripted.userId;
 
     if(!userId) {
-        return response.status(403).json({ message: 'proíbido' });
+        return response.status(403).json({ message: 'proibido' });
     }
 
     const product = request.body;

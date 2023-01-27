@@ -5,7 +5,7 @@ services:
     depends_on: 
       - product-database 
     image: ecomm/product
-    build: product # docker build ./product -t pagonxt/product
+    build: product # docker build ./product -t ecomm/product
     entrypoint: 'npm run start:dev'
     volumes:
       - ./product:/app
@@ -15,7 +15,7 @@ services:
   product-database:
     image: mysql
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: rXV4PShcYEhm9pyy/BONu8/urLbm4WCP
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
       MYSQL_DATABASE: products
       MYSQL_USER: mysqluser
       MYSQL_PASSWORD: mysqlpass
