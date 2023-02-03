@@ -1,4 +1,4 @@
-import { findProducts } from "../../src/repositories/productRepository";
+import { findProducts } from "../../src/repositories/productRepository.js";
 
 export async function cleanProductTable () {
     const products = await findProducts();
