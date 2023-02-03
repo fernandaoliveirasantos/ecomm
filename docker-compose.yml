@@ -15,7 +15,7 @@ services:
   product-database:
     image: mysql
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: true
+      MYSQL_ALLOW_EMPTY_PASSWORD: rXV4PShcYEhm9pyy/BONu8/urLbm4WCP
       MYSQL_DATABASE: products
       MYSQL_USER: mysqluser
       MYSQL_PASSWORD: mysqlpass
