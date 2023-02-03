@@ -1,175 +1,161 @@
-openapi: 3.0.3
+openapi: 3.0.1
 info:
   version: 1.0.0
   title: API ECOMM Products
   description: API restful products eccom
   contact:
-    name: Suporte a Devs
+     name: Suporte a Devs
     url: 'https://www.example.com'
     email: contato@example.com
 servers:
-- url: 'http://localhost:3000'
-  description: Server 1
+  - url: 'http://localhost:3000'
+    description: Server 1
 paths:
-  "/products":
-    summary: cria um produto
+  /products:
+   summary: cria um produto
     description: 'Cria um produto no banco de dados de acordo com os dados fornecidos'
     post:
+      security:
+        - bearerAuth: []
       requestBody:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/ProductData"
+              $ref: '#/components/schemas/CreateProductRequest'
       responses:
-        '201':
+        201:
           description: Cria um produto
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/CreatedProductData"
+                $ref: '#/components/schemas/ProductResponse'
+        400:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        401:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        403:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
     get:
       responses:
-       '200':
-        description: "sucess"
-        content:
+        200:
+          content:
             application/json:
               schema:
                 type: array
                 items:
-                  "$ref": "#/components/schemas/ProductData"
+                  $ref: '#/components/schemas/ProductResponse'
 components:
+  securitySchemes:
+    bearerAuth: 
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
-    ImagemData:
+    ImageResponse:
+      type: object
+      properties:
+        id: 
+          type: integer
+        url:
+          type: string
+        description:
+          type: string
+        createdDate:
+          type: string
+        updatedDate:
+          type: string
+    FeatureResponse:
+      type: object
+      properties:
+        id: 
+          type: integer 
+        name:
+          type: string
+        description:
+          type: string
+        createdDate:
+          type: string
+        updatedDate:
+          type: string
+    ProductResponse:
+      type: object
+      properties:
+        id: 
+          type: integer
+        user_id: 
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        quantity:
+          type: integer
+        value:
+          type: number
+        createdDate:
+          type: string
+        updatedDate:
+          type: string
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureResponse'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageResponse'
+    CreateProductRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        quantity:
+          type: integer
+        value:
+          type: number
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateFeatureRequest'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateImageRequest'
+    CreateImageRequest:
       type: object
       properties:
         url:
           type: string
-        descricao:
+        description:
           type: string
-    CaracteristicaData:
+    CreateFeatureRequest:
       type: object
       properties:
-        nome:
+        name:
           type: string
-        descricao:
+        description:
           type: string
-    ProductData:
-      type: object
-      properties:
-        usuarioId:
-          type: string
-        nome:
-          type: string
-        descricao:
-          type: string
-        categoria:
-          type: string
-        quantidade:
-          type: integer
-        valor:
-          type: number
-        caracteristicas:
-          type: array
-          items:
-            "$ref": "#/components/schemas/CaracteristicaData"
-        imagens:
-          type: array
-          items:
-            "$ref": "#/components/schemas/ImagemData"
-    CreatedProductData:
-      type: object
-      properties:
-        usuarioId:
-          type: string
-        createdDate:
-          type: string
-        id:
-          type: string
-        nome:
-          type: string
-        descricao:
-          type: string
-        categoria:
-          type: string
-        quantidade:
-          type: integer
-        valor:
-          type: number
-        caracteristicas:
-          type: array
-          items:
-            "$ref": "#/components/schemas/CaracteristicaData"
-        imagens:
-          type: array
-          items:
-            "$ref": "#/components/schemas/ImagemData"
-              schema:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/ProductData"
-components:
-  schemas:
-    ImagemData:
-      type: object
-      properties:
-        url:
-          type: string
-        descricao:
-          type: string
-    CaracteristicaData:
-      type: object
-      properties:
-        nome:
-          type: string
-        descricao:
-          type: string
-    ProductData:
-      type: object
-      properties:
-        usuarioId:
-          type: string
-        nome:
-          type: string
-        descricao:
-          type: string
-        categoria:
-          type: string
-        quantidade:
-          type: integer
-        valor:
-          type: number
-        caracteristicas:
-          type: array
-          items:
-            "$ref": "#/components/schemas/CaracteristicaData"
-        imagens:
-          type: array
-          items:
-            "$ref": "#/components/schemas/ImagemData"
-    CreatedProductData:
-      type: object
-      properties:
-        usuarioId:
-          type: string
-        createdDate:
-          type: string
-        id:
-          type: string
-        nome:
-          type: string
-        descricao:
-          type: string
-        categoria:
-          type: string
-        quantidade:
-          type: integer
-        valor:
-          type: number
-        caracteristicas:
-          type: array
-          items:
-            "$ref": "#/components/schemas/CaracteristicaData"
-        imagens:
-          type: array
-          items:
-            "$ref": "#/components/schemas/ImagemData"
