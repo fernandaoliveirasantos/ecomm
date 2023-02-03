@@ -5,7 +5,6 @@ import { cleanProductTable } from '../helpers/product.js';
 import { generateToken } from '../helpers/token.js';
 
 describe('Cria Produto', () => {
-
     afterEach(async () => {
         await cleanProductTable();
     });
