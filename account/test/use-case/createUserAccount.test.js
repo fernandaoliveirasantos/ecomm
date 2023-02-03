@@ -1,18 +1,18 @@
 import request from 'supertest';
+
 import { app } from '../../src/app.js';
 import { client, getUsersCollection } from '../../src/repositories/accountRepository.js';
+import { createUserUseCase } from '../../src/use-case/createUserAccount.js';
 
 describe('Criação de conta', () => {
-
-    beforeEach(async () => {
+    afterAll(async () => {
         await client.close();
-    });
 
-    afterEach(async () => {
-        await client.connect();
+    });
+    beforeEach(async () => {
         const usersCollection = await getUsersCollection(client);
         await usersCollection.deleteMany({});
-        await client.close();
+        
     });
 
     it('Cadastrar um usuário se os dados estiverem corretos', async () => {
@@ -32,6 +32,25 @@ describe('Criação de conta', () => {
                     name: 'Nicolas',
                     email: 'nicolas@email.com',
                     createdDate: new Date().toISOString().slice(0, 10)
+                })
+            });
+    });
+
+    it('não deve criar um usuário se o e-mail já estiver em uso', async () => {
+        await createUserUseCase('Mariana', 'mariana@email.com', 'nova@senha123');
+        await request(app)
+            .post('/accounts')
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/json')
+            .send({
+                name: 'Mariana',
+                email: 'mariana@email.com',
+                password: 'nova@senha123'
+            })
+            .expect(400)
+            .expect(({ body }) => {
+                expect(body).toEqual({
+                    message: 'Usuário já cadastrado'
                 })
             });
     });

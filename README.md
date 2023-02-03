@@ -40,5 +40,5 @@ Repositório criado durante o curso Alura Level UP como parte do processo de apr
 - **Essencial** - Testar os endpoints das APIs
 
 ## 💻 Semana 9/12
-- **Essencial** - Autenticando o usuário
-- **Essencial** - Autorizando o usuário
+- **Essencial** - Autenticar o usuário
+- **Essencial** - Autorizar o usuário
