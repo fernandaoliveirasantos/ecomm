@@ -1,13 +1,11 @@
 import { hashPassword } from '../helpers/password.js';
-import { saveAccount } from '../repositories/accountRepository.js';
-
+import { existsByEmail, saveAccount } from '../repositories/accountRepository.js';
 
 export async function createUserUseCase(name, email, password) {
+    const alreadyRegistered = await existsByEmail(email);
 
-    const accountAlreadyExists = await existsAccountByEmail(email);
-    if(accountAlreadyExists) {
-        console.error('Essa conta já existe', email);
-        throw new Error('Essa conta já existe');
+    if(alreadyRegistered) {
+        throw new Error('Usuário já cadastrado');
     }
 
     const createdDate = new Date().toISOString().substring(0, 10);
