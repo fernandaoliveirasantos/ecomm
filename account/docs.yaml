@@ -27,6 +27,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountResponse'
+        400:
+          description: Conta não criada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
   /tokens:
     summary: Cria um token de conta
     description: 'Cria um token de conta com é informado e-mail e senha'
