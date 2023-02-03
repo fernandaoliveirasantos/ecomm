@@ -1,26 +1,17 @@
-{
-  "development": {
-    "username": "mysqluser",
-    "password": "mysqlpass",
-    "database": "products",
-    "host": "127.0.0.1",
-    "port": "3307",
-    "dialect": "mysql"
-  },
-  "test": {
-    "username": "root",
-    "password": "rXV4PShcYEhm9pyy/BONu8/urLbm4WCP",
-    "database": "products_test",
-    "host": "127.0.0.1",
-    "port": "3307",
-    "dialect": "mysql"
-  },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "port": "3307",
-    "dialect": "mysql"
-  }
+const DATABASE_URL = process.env.DATABASE_URL_CLI;
+const DATABASE_URL_REPLACER = process.env.DATABASE_URL_CLI_REPLACER;
+
+const [dialect, username, password, host, port, database] = DATABASE_URL
+  .replace('://', DATABASE_URL_REPLACER)
+  .replace('@', DATABASE_URL_REPLACER)
+  .replace('/', DATABASE_URL_REPLACER)
+  .replaceAll(':', DATABASE_URL_REPLACER)
+  .split(DATABASE_URL_REPLACER);
+  
+console.log(dialect, username, password, host, port, database);
+
+export default {
+  "development": { username, password, database, host, dialect, port },
+  "test": { username, password, database, host, dialect, port },
+  "production": { username, password, database, host, dialect, port }
 }
