@@ -42,3 +42,11 @@ Repositório criado durante o curso Alura Level UP como parte do processo de apr
 ## 💻 Semana 9/12
 - **Essencial** - Autenticar o usuário
 - **Essencial** - Autorizar o usuário
+
+## 💻 Semana 10/12
+- **Essencial** - Usuários duplicados
+- **Essencial** - Variáveis de ambiente
+
+## 💻 Semana 11/12
+- **Essencial** - Autenticar o usuário
+- **Essencial** - Autorizar o usuário
